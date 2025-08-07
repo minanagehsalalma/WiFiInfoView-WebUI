@@ -2,7 +2,7 @@
 # WIFI-INFO-VIEW Interactive GUI
 
 An **interactive, web-based front-end** for NirSoft’s amazing [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) utility. This project wraps the original `.exe` to provide a modern, browser-based interface for monitoring Wi-Fi networks.
-
+<img width="1897" height="865" alt="image" src="https://github.com/user-attachments/assets/de2cab4d-d386-4a7e-9194-c0b82f39accc" />
 -----
 
 ## ✨ Features
@@ -26,6 +26,8 @@ An **interactive, web-based front-end** for NirSoft’s amazing [WifiInfoView](h
 While WifiInfoView is a fantastic portable tool for inspecting Wi-Fi networks, it is closed-source and cannot be extended. This GUI wrapper was created to:
 
 1.  **Mark hidden SSIDs** by name and have those names persist between sessions.
+<img width="477" height="243" alt="Enter-SSID" src="https://github.com/user-attachments/assets/944b2e9d-c4eb-4e7f-b721-77cdc85cfc1b" />
+
 2.  **Interact** with live scan data in your browser: search, filter, sort, and page through the results.
 3.  **Auto-refresh** continuously without losing your state or reloading the entire page.
 
