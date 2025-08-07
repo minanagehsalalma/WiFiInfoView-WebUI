@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" suppresshydrationwarning="true" data-lt-installed="true" style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WiFi SSID Mapper</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
+    <style>
+        .ssid-editable:hover { cursor: pointer; background-color: #eef; }
+        .ssid-mapped { background-color: #fff8e1; font-style: italic; }
+        .ssid-mapped::after { content: " ⭐"; }
+        .table-info { --bs-table-bg: #cff4fc; } /* Example user-added row color */
+    </style>
+</head>
+<body class="bg-light">
+ <div class="container-fluid py-4">
+ <h1 class="mb-4">WiFi Network Samples</h1>
+ <div class="d-flex align-items-center mb-3">
+ <div class="form-check me-4">
+ <input class="form-check-input" type="checkbox" id="auto-refresh" value="on">
+ <label class="form-check-label" for="auto-refresh">Auto-Refresh</label>
+ </div>
+ <div class="input-group" style="width:120px">
+ <span class="input-group-text">Interval (s)</span>
+ <input type="number" id="refresh-interval" class="form-control" value="5" min="1">
+ </div>
+ <button id="rescan-btn" class="btn btn-secondary ms-3">Rescan Now</button>
+ </div>
+ <div class="table-responsive">
+ <table id="wifi-table" class="table table-bordered table-hover w-100" style="min-width:800px;">
+ <thead>
+    <tr>
+        <th>SSID</th>
+        <th>MAC Address</th>
+        <th>Channel</th>
+        <th>MAC Group</th>
+        <th>RSSI</th>
+        <th>Security</th>
+        <th>WPS Support</th>
+        <th>Company</th>
+        <th>PHY Type</th>
+        <th>Average Signal Quality</th>
+        <th>Signal Quality</th>
+        <th>Router Model</th>
+        <th>Frequency</th>
+        <th>Information Size</th>
+        <th>Elements Count</th>
+        <th>Router Name</th>
+        <th>Cipher</th>
+        <th>Maximum Speed</th>
+        <th>Channel Width</th>
+        <th>Channels Range</th>
+        <th>BSS Type</th>
+        <th>First Detection</th>
+        <th>Last Detection</th>
+        <th>Detection Count</th>
+        <th>Start Time</th>
+        <th>Minimum Signal Quality</th>
+        <th>Maximum Signal Quality</th>
+        <th>802.11 Standards</th>
+        <th>Connected</th>
+        <th>Stations Count</th>
+        <th>Channel Utilization</th>
+        <th>Country Code</th>
+        <th>Description</th>
+    </tr>
+</thead>
+ <tbody>
+    <tr class="odd">
+        <td>HomeNet-5281_5G</td>
+        <td>BC:1A:7C:9D:E4:33</td>
+        <td>149</td>
+        <td></td>
+        <td>-58</td>
+        <td>WPA2-PSK</td>
+        <td>Configured</td>
+        <td>TP-Link</td>
+        <td>802.11n/ac</td>
+        <td>95.0</td>
+        <td>98</td>
+        <td>Archer C7</td>
+        <td>5.745</td>
+        <td>271</td>
+        <td>18</td>
+        <td></td>
+        <td>CCMP</td>
+        <td>867 Mbps</td>
+        <td>80 MHz</td>
+        <td>149 - 161</td>
+        <td>Infrastructure</td>
+        <td>8/1/2025 4:15 PM</td>
+        <td>8/7/2025 4:08 AM</td>
+        <td>45</td>
+        <td>7/28/2025 11:10 AM</td>
+        <td>80</td>
+        <td>100</td>
+        <td>802.11d/e/h/i</td>
+        <td>Yes</td>
+        <td>3</td>
+        <td>5.5%</td>
+        <td>US</td>
+        <td></td>
+    </tr>
+    <tr class="table-info even">
+        <td class="ssid-editable ssid-mapped" data-mac="4A:D0:61:8C:1B:A7">Living Room AP</td>
+        <td>4A:D0:61:8C:1B:A7</td>
+        <td>6</td>
+        <td>1</td>
+        <td>-65</td>
+        <td>WPA-EAP + WPA2-EAP</td>
+        <td>No</td>
+        <td>HUAWEI TECHNOLOGIES CO.,LTD</td>
+        <td>802.11g/n</td>
+        <td>70.0</td>
+        <td>72</td>
+        <td></td>
+        <td>2.437</td>
+        <td>258</td>
+        <td>20</td>
+        <td></td>
+        <td>TKIP+CCMP</td>
+        <td>300 Mbps</td>
+        <td>40 MHz</td>
+        <td>4 - 12</td>
+        <td>Infrastructure</td>
+        <td>7/22/2025 9:30 AM</td>
+        <td>8/7/2025 4:05 AM</td>
+        <td>150</td>
+        <td>7/22/2025 9:30 AM</td>
+        <td>65</td>
+        <td>75</td>
+        <td>802.11d/e/h</td>
+        <td>No</td>
+        <td>0</td>
+        <td>18.2%</td>
+        <td>EG</td>
+        <td></td>
+    </tr>
+    <tr class="odd">
+        <td class="ssid-editable" data-mac="B8:F6:19:3B:77:EE"></td>
+        <td>B8:F6:19:3B:77:EE</td>
+        <td>11</td>
+        <td>2</td>
+        <td>-78</td>
+        <td></td>
+        <td>No</td>
+        <td>Netgear</td>
+        <td>802.11g/n</td>
+        <td>40.0</td>
+        <td>41</td>
+        <td></td>
+        <td>2.462</td>
+        <td>199</td>
+        <td>17</td>
+        <td></td>
+        <td>None</td>
+        <td>300 Mbps</td>
+        <td>40 MHz</td>
+        <td>7 - 15</td>
+        <td>Infrastructure</td>
+        <td>8/3/2025 1:00 PM</td>
+        <td>8/7/2025 3:55 AM</td>
+        <td>8</td>
+        <td>8/3/2025 1:00 PM</td>
+        <td>35</td>
+        <td>45</td>
+        <td>802.11d/e/h</td>
+        <td>No</td>
+        <td>0</td>
+        <td>21.5%</td>
+        <td>CA</td>
+        <td></td>
+    </tr>
+    <tr class="even">
+        <td>MySpectrumWiFi-A8-2G</td>
+        <td>1C:D0:8A:8C:48:F4</td>
+        <td>1</td>
+        <td>1</td>
+        <td>-69</td>
+        <td>WPA-PSK + WPA2-PSK</td>
+        <td>No</td>
+        <td>ASUSTek COMPUTER INC.</td>
+        <td>802.11g/n</td>
+        <td>68.0</td>
+        <td>75</td>
+        <td>RT-AC68U</td>
+        <td>2.412</td>
+        <td>285</td>
+        <td>19</td>
+        <td></td>
+        <td>TKIP+CCMP</td>
+        <td>300 Mbps</td>
+        <td>20 MHz</td>
+        <td>1 - 5</td>
+        <td>Infrastructure</td>
+        <td>7/30/2025 8:00 AM</td>
+        <td>8/7/2025 4:01 AM</td>
+        <td>210</td>
+        <td>7/25/2025 10:00 PM</td>
+        <td>60</td>
+        <td>75</td>
+        <td>802.11d/i/k</td>
+        <td>No</td>
+        <td>1</td>
+        <td>12.0%</td>
+        <td>DE</td>
+        <td></td>
+    </tr>
+    <tr class="table-info odd">
+        <td class="ssid-editable ssid-mapped" data-mac="90:FD:B3:AC:6C:63">Neighbor-Net</td>
+        <td>90:FD:B3:AC:6C:63</td>
+        <td>44</td>
+        <td></td>
+        <td>-82</td>
+        <td>WPA2-PSK</td>
+        <td>No</td>
+        <td>zte corporation</td>
+        <td>802.11n/ac</td>
+        <td>35.0</td>
+        <td>38</td>
+        <td></td>
+        <td>5.220</td>
+        <td>188</td>
+        <td>15</td>
+        <td></td>
+        <td>CCMP</td>
+        <td>144 Mbps</td>
+        <td>80 MHz</td>
+        <td>36 - 52</td>
+        <td>Infrastructure</td>
+        <td>8/6/2025 5:50 AM</td>
+        <td>8/7/2025 2:30 AM</td>
+        <td>33</td>
+        <td>8/6/2025 5:50 AM</td>
+        <td>25</td>
+        <td>45</td>
+        <td>802.11d/i/k</td>
+        <td>No</td>
+        <td>1</td>
+        <td>3.1%</td>
+        <td>GB</td>
+        <td></td>
+    </tr>
+    <tr class="even">
+        <td>AndroidAP_44B1</td>
+        <td>EC:75:3E:B4:9A:C0</td>
+        <td>11</td>
+        <td></td>
+        <td>-88</td>
+        <td>WPA2-PSK</td>
+        <td>Configured</td>
+        <td>Intel Corporate</td>
+        <td>802.11g/n</td>
+        <td>22.0</td>
+        <td>25</td>
+        <td></td>
+        <td>2.462</td>
+        <td>275</td>
+        <td>19</td>
+        <td></td>
+        <td>TKIP+CCMP</td>
+        <td>270 Mbps</td>
+        <td>40 MHz</td>
+        <td>5 - 13</td>
+        <td>Infrastructure</td>
+        <td>8/5/2025 10:28 PM</td>
+        <td>8/6/2025 11:00 PM</td>
+        <td>19</td>
+        <td>8/5/2025 10:28 PM</td>
+        <td>10</td>
+        <td>25</td>
+        <td>802.11d/e/h/i</td>
+        <td>No</td>
+        <td>4</td>
+        <td>49.4%</td>
+        <td>FR</td>
+        <td></td>
+    </tr>
+    <tr class="odd">
+        <td>OfficeGuest</td>
+        <td>A4:F3:3B:C0:29:0C</td>
+        <td>1</td>
+        <td></td>
+        <td>-79</td>
+        <td></td>
+        <td>No</td>
+        <td>D-Link International</td>
+        <td>802.11g/n</td>
+        <td>35.0</td>
+        <td>33</td>
+        <td></td>
+        <td>2.412</td>
+        <td>218</td>
+        <td>18</td>
+        <td></td>
+        <td>None</td>
+        <td>144 Mbps</td>
+        <td>20 MHz</td>
+        <td>1 - 5</td>
+        <td>Infrastructure</td>
+        <td>7/24/2025 6:59 PM</td>
+        <td>8/7/2025 1:15 AM</td>
+        <td>5</td>
+        <td>7/24/2025 6:59 PM</td>
+        <td>30</td>
+        <td>40</td>
+        <td>802.11d/e/h/i</td>
+        <td>No</td>
+        <td>0</td>
+        <td>8.0%</td>
+        <td>JP</td>
+        <td></td>
+    </tr>
+ </tbody>
+</table>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    // Placeholder for table initialization logic
+    $(document).ready(function() {
+        $('#wifi-table').DataTable({
+            "order": [[ 4, "desc" ]] // Default sort by RSSI
+        });
+    });
+</script>
+</body>
+</html>
