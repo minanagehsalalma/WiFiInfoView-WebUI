@@ -71,9 +71,9 @@ WIFIINFOVIEW_EXE = r"C:\path\to\your\WifiInfoView.exe"
 EXPORT_CSV       = r"C:\path\to\your\wifi.csv"
 ```
 
-### 3\. Create Mapping File
+### 3\. The Mapping File
 
-Create an empty JSON file named `ssid_mapping.json` in the same directory as `app.py`. This file will store your custom names for hidden SSIDs.
+The file named `ssid_mapping.json` in the same directory as `app.py`. This file will store your custom names for hidden SSIDs.
 
 ```json
 {}
